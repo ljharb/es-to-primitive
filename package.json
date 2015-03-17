@@ -1,0 +1,71 @@
+{
+	"name": "es-to-primitive",
+	"version": "0.0.0",
+	"author": "Jordan Harband",
+	"description": "ECMAScript “ToPrimitive” algorithm. Provides ES5 and ES6 versions.",
+	"license": "MIT",
+	"main": "index.js",
+	"scripts": {
+		"test": "npm run lint && node --harmony --es-staging test && npm run security",
+		"coverage": "covert test/*.js",
+		"coverage-quiet": "covert test/*.js --quiet",
+		"lint": "npm run jscs && npm run eslint",
+		"jscs": "jscs test/*.js *.js",
+		"eslint": "eslint test/*.js *.js",
+		"eccheck": "editorconfig-tools check *.js **/*.js > /dev/null",
+		"security": "nsp package"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/ljharb/es-to-primitive.git"
+	},
+	"keywords": [
+		"primitive",
+		"abstract",
+		"ecmascript",
+		"es5",
+		"es6",
+		"toPrimitive",
+		"coerce",
+		"type",
+		"object"
+	],
+	"dependencies": {
+		"is-callable": "^1.0.4",
+		"is-date-object": "^1.0.0",
+		"is-symbol": "^1.0.1"
+	},
+	"devDependencies": {
+		"tape": "^3.5.0",
+		"covert": "^1.0.1",
+		"object-is": "^1.0.1",
+		"foreach": "^2.0.5",
+		"jscs": "^1.11.3",
+		"editorconfig-tools": "^0.1.1",
+		"nsp": "^1.0.1",
+		"eslint": "^0.17.0",
+		"make-arrow-function": "^1.0.0",
+		"make-generator-function": "^1.1.0"
+	},
+	"testling": {
+		"files": "test.js",
+		"browsers": [
+			"iexplore/6.0..latest",
+			"firefox/3.0..6.0",
+			"firefox/15.0..latest",
+			"firefox/nightly",
+			"chrome/4.0..10.0",
+			"chrome/20.0..latest",
+			"chrome/canary",
+			"opera/10.0..latest",
+			"opera/next",
+			"safari/4.0..latest",
+			"ipad/6.0..latest",
+			"iphone/6.0..latest",
+			"android-browser/4.2"
+		]
+	},
+	"engines": {
+		"node": ">= 0.4"
+	}
+}
