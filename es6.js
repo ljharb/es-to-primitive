@@ -46,6 +46,7 @@ module.exports = function ToPrimitive(input, PreferredType) {
 	if (hasSymbols) {
 		if (Symbol.toPrimitive) {
 			throw new TypeError('Symbol.toPrimitive not supported yet');
+
 			// exoticToPrim = this.GetMethod(input, Symbol.toPrimitive);
 		} else if (isSymbol(input)) {
 			exoticToPrim = Symbol.prototype.valueOf;
