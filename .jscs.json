@@ -98,7 +98,7 @@
 	"requirePaddingNewLinesBeforeExport": true,
 
 	"validateNewlineAfterArrayElements": {
-		"maximum": 15
+		"maximum": 12
 	},
 
 	"requirePaddingNewLinesAfterUseStrict": true
