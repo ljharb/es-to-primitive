@@ -1,3 +1,5 @@
+'use strict';
+
 var toPrimitive = require('../');
 var ES5 = require('../es5');
 var ES6 = require('../es6');

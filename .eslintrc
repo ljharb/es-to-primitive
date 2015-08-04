@@ -1,16 +1,11 @@
 {
 	"root": true,
 
-	"env": {
-		"browser": false,
-		"node": true,
-		"amd": false,
-		"mocha": false,
-		"jasmine": false
-	},
+	"extends": "@ljharb",
 
 	"rules": {
 		"complexity": [2, 13],
-		"max-statements": [2, 20]
+		"max-statements": [2, 20],
+		"no-extra-parens": [2, "functions"]
 	}
 }

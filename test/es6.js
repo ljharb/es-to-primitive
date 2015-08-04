@@ -1,3 +1,5 @@
+'use strict';
+
 var test = require('tape');
 var toPrimitive = require('../es6');
 var is = require('object-is');
