@@ -40,7 +40,7 @@
 		"covert": "^1.1.0",
 		"object-is": "^1.0.1",
 		"foreach": "^2.0.5",
-		"jscs": "^2.0.0",
+		"jscs": "^2.1.0",
 		"editorconfig-tools": "^0.1.1",
 		"nsp": "^1.0.3",
 		"eslint": "^1.1.0",
