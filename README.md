@@ -37,7 +37,7 @@ assert(toPrimitive(Object(sym)) === sym);
 Simply clone the repo, `npm install`, and run `npm test`
 
 [package-url]: https://npmjs.org/package/es-to-primitive
-[npm-version-svg]: http://vb.teelaun.ch/ljharb/es-to-primitive.svg
+[npm-version-svg]: http://versionbadg.es/ljharb/es-to-primitive.svg
 [travis-svg]: https://travis-ci.org/ljharb/es-to-primitive.svg
 [travis-url]: https://travis-ci.org/ljharb/es-to-primitive
 [deps-svg]: https://david-dm.org/ljharb/es-to-primitive.svg
