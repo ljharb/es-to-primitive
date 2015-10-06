@@ -31,8 +31,8 @@
 		"object"
 	],
 	"dependencies": {
-		"is-callable": "^1.0.4",
-		"is-date-object": "^1.0.0",
+		"is-callable": "^1.1.0",
+		"is-date-object": "^1.0.1",
 		"is-symbol": "^1.0.1"
 	},
 	"devDependencies": {
