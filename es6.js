@@ -28,7 +28,17 @@ var ordinaryToPrimitive = function OrdinaryToPrimitive(O, hint) {
 	throw new TypeError('No default value');
 };
 
-// https://people.mozilla.org/~jorendorff/es6-draft.html#sec-toprimitive
+var GetMethod = function GetMethod(O, P) {
+	var func = O[P];
+	if (func !== null && typeof func !== 'undefined') {
+		if (!isCallable(func)) {
+			throw new TypeError(func + ' returned for property ' + P + ' of object ' + O + ' is not a function');
+		}
+		return func;
+	}
+};
+
+// http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
 module.exports = function ToPrimitive(input, PreferredType) {
 	if (isPrimitive(input)) {
 		return input;
@@ -45,9 +55,7 @@ module.exports = function ToPrimitive(input, PreferredType) {
 	var exoticToPrim;
 	if (hasSymbols) {
 		if (Symbol.toPrimitive) {
-			throw new TypeError('Symbol.toPrimitive not supported yet');
-
-			// exoticToPrim = this.GetMethod(input, Symbol.toPrimitive);
+			exoticToPrim = GetMethod(input, Symbol.toPrimitive);
 		} else if (isSymbol(input)) {
 			exoticToPrim = Symbol.prototype.valueOf;
 		}

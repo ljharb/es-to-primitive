@@ -7,6 +7,7 @@ var forEach = require('foreach');
 var debug = require('util').inspect;
 
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
+var hasSymbolToPrimitive = hasSymbols && typeof Symbol.toPrimitive === 'symbol';
 
 var primitives = [null, undefined, true, false, 0, -0, 42, NaN, Infinity, -Infinity, '', 'abc'];
 
@@ -82,6 +83,39 @@ test('Objects', function (t) {
 	t.equal(toPrimitive(valueOfOnlyObject), valueOfOnlyObject.valueOf(), 'valueOfOnlyObject returns valueOf');
 	t.equal(toPrimitive(valueOfOnlyObject, Number), valueOfOnlyObject.valueOf(), 'valueOfOnlyObject with hint Number returns valueOf');
 	t.equal(toPrimitive(valueOfOnlyObject, String), valueOfOnlyObject.valueOf(), 'valueOfOnlyObject with hint String returns non-stringified valueOf');
+
+	t.test('Symbol.toPrimitive', { skip: !hasSymbolToPrimitive }, function (st) {
+		var overriddenObject = { toString: st.fail, valueOf: st.fail };
+		overriddenObject[Symbol.toPrimitive] = function (hint) { return String(hint); };
+
+		st.equal(toPrimitive(overriddenObject), 'default', 'object with Symbol.toPrimitive + no hint invokes that');
+		st.equal(toPrimitive(overriddenObject, Number), 'number', 'object with Symbol.toPrimitive + hint Number invokes that');
+		st.equal(toPrimitive(overriddenObject, String), 'string', 'object with Symbol.toPrimitive + hint String invokes that');
+
+		var nullToPrimitive = { toString: coercibleObject.toString, valueOf: coercibleObject.valueOf };
+		nullToPrimitive[Symbol.toPrimitive] = null;
+		st.equal(toPrimitive(nullToPrimitive), toPrimitive(coercibleObject), 'object with no hint + null Symbol.toPrimitive ignores it');
+		st.equal(toPrimitive(nullToPrimitive, Number), toPrimitive(coercibleObject, Number), 'object with hint Number + null Symbol.toPrimitive ignores it');
+		st.equal(toPrimitive(nullToPrimitive, String), toPrimitive(coercibleObject, String), 'object with hint String + null Symbol.toPrimitive ignores it');
+
+		st.test('exceptions', function (sst) {
+			var nonFunctionToPrimitive = { toString: sst.fail, valueOf: sst.fail };
+			nonFunctionToPrimitive[Symbol.toPrimitive] = {};
+			sst.throws(toPrimitive.bind(null, nonFunctionToPrimitive), TypeError, 'Symbol.toPrimitive returning a non-function throws');
+
+			var uncoercibleToPrimitive = { toString: sst.fail, valueOf: sst.fail };
+			uncoercibleToPrimitive[Symbol.toPrimitive] = function (hint) { return { toString: function () { return hint; } }; };
+			sst.throws(toPrimitive.bind(null, uncoercibleToPrimitive), TypeError, 'Symbol.toPrimitive returning an object throws');
+
+			var throwingToPrimitive = { toString: sst.fail, valueOf: sst.fail };
+			throwingToPrimitive[Symbol.toPrimitive] = function (hint) { throw new RangeError(hint); };
+			sst.throws(toPrimitive.bind(null, throwingToPrimitive), RangeError, 'Symbol.toPrimitive throwing throws');
+
+			sst.end();
+		});
+
+		st.end();
+	});
 
 	t.test('exceptions', function (st) {
 		st.throws(toPrimitive.bind(null, uncoercibleObject), TypeError, 'uncoercibleObject throws a TypeError');
