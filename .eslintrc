@@ -5,6 +5,7 @@
 
 	"rules": {
 		"complexity": [2, 13],
+		"dot-notation": [2, { "allowKeywords": true, "allowPattern": "throws" }],
 		"id-length": [2, { "min": 1, "max": 24, "properties": "never" }],
 		"max-statements": [2, 20],
 		"new-cap": [2, { "capIsNewExceptions": ["GetMethod"] }],

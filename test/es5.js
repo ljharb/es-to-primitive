@@ -66,13 +66,13 @@ test('Objects', function (t) {
 	t.equal(toPrimitive(valueOfOnlyObject, Number), valueOfOnlyObject.valueOf(), 'valueOfOnlyObject with hint Number returns valueOf');
 
 	t.test('exceptions', function (st) {
-		st.throws(toPrimitive.bind(null, uncoercibleObject), TypeError, 'uncoercibleObject throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleObject, String), TypeError, 'uncoercibleObject with hint String throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleObject, Number), TypeError, 'uncoercibleObject with hint Number throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleObject), TypeError, 'uncoercibleObject throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleObject, String), TypeError, 'uncoercibleObject with hint String throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleObject, Number), TypeError, 'uncoercibleObject with hint Number throws a TypeError');
 
-		st.throws(toPrimitive.bind(null, uncoercibleFnObject), TypeError, 'uncoercibleFnObject throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleFnObject, String), TypeError, 'uncoercibleFnObject with hint String throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleFnObject, Number), TypeError, 'uncoercibleFnObject with hint Number throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleFnObject), TypeError, 'uncoercibleFnObject throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleFnObject, String), TypeError, 'uncoercibleFnObject with hint String throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleFnObject, Number), TypeError, 'uncoercibleFnObject with hint Number throws a TypeError');
 		st.end();
 	});
 

@@ -101,15 +101,15 @@ test('Objects', function (t) {
 		st.test('exceptions', function (sst) {
 			var nonFunctionToPrimitive = { toString: sst.fail, valueOf: sst.fail };
 			nonFunctionToPrimitive[Symbol.toPrimitive] = {};
-			sst.throws(toPrimitive.bind(null, nonFunctionToPrimitive), TypeError, 'Symbol.toPrimitive returning a non-function throws');
+			sst['throws'](toPrimitive.bind(null, nonFunctionToPrimitive), TypeError, 'Symbol.toPrimitive returning a non-function throws');
 
 			var uncoercibleToPrimitive = { toString: sst.fail, valueOf: sst.fail };
 			uncoercibleToPrimitive[Symbol.toPrimitive] = function (hint) { return { toString: function () { return hint; } }; };
-			sst.throws(toPrimitive.bind(null, uncoercibleToPrimitive), TypeError, 'Symbol.toPrimitive returning an object throws');
+			sst['throws'](toPrimitive.bind(null, uncoercibleToPrimitive), TypeError, 'Symbol.toPrimitive returning an object throws');
 
 			var throwingToPrimitive = { toString: sst.fail, valueOf: sst.fail };
 			throwingToPrimitive[Symbol.toPrimitive] = function (hint) { throw new RangeError(hint); };
-			sst.throws(toPrimitive.bind(null, throwingToPrimitive), RangeError, 'Symbol.toPrimitive throwing throws');
+			sst['throws'](toPrimitive.bind(null, throwingToPrimitive), RangeError, 'Symbol.toPrimitive throwing throws');
 
 			sst.end();
 		});
@@ -118,13 +118,13 @@ test('Objects', function (t) {
 	});
 
 	t.test('exceptions', function (st) {
-		st.throws(toPrimitive.bind(null, uncoercibleObject), TypeError, 'uncoercibleObject throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleObject, Number), TypeError, 'uncoercibleObject with hint Number throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleObject, String), TypeError, 'uncoercibleObject with hint String throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleObject), TypeError, 'uncoercibleObject throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleObject, Number), TypeError, 'uncoercibleObject with hint Number throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleObject, String), TypeError, 'uncoercibleObject with hint String throws a TypeError');
 
-		st.throws(toPrimitive.bind(null, uncoercibleFnObject), TypeError, 'uncoercibleFnObject throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleFnObject, Number), TypeError, 'uncoercibleFnObject with hint Number throws a TypeError');
-		st.throws(toPrimitive.bind(null, uncoercibleFnObject, String), TypeError, 'uncoercibleFnObject with hint String throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleFnObject), TypeError, 'uncoercibleFnObject throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleFnObject, Number), TypeError, 'uncoercibleFnObject with hint Number throws a TypeError');
+		st['throws'](toPrimitive.bind(null, uncoercibleFnObject, String), TypeError, 'uncoercibleFnObject with hint String throws a TypeError');
 		st.end();
 	});
 	t.end();
