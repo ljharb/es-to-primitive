@@ -37,7 +37,7 @@
 		"is-symbol": "^1.0.1"
 	},
 	"devDependencies": {
-		"tape": "^4.2.2",
+		"tape": "^4.4.0",
 		"covert": "^1.1.0",
 		"object-is": "^1.0.1",
 		"foreach": "^2.0.5",
