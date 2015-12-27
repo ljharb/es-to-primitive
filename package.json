@@ -1,6 +1,6 @@
 {
 	"name": "es-to-primitive",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": "Jordan Harband",
 	"description": "ECMAScript “ToPrimitive” algorithm. Provides ES5 and ES6 versions.",
 	"license": "MIT",
