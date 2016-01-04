@@ -20,9 +20,9 @@ test('primitives', function (t) {
 test('Arrays', function (t) {
 	var arrays = [[], ['a', 'b'], [1, 2]];
 	forEach(arrays, function (arr) {
-		t.ok(is(toPrimitive(arr), Number(arr)), 'toPrimitive(' + debug(arr) + ') returns the number version of the array');
-		t.equal(toPrimitive(arr, String), String(arr), 'toPrimitive(' + debug(arr) + ') returns the string version of the array');
-		t.ok(is(toPrimitive(arr, Number), Number(arr)), 'toPrimitive(' + debug(arr) + ') returns the number version of the array');
+		t.ok(is(toPrimitive(arr), arr.toString()), 'toPrimitive(' + debug(arr) + ') returns toString of the array');
+		t.equal(toPrimitive(arr, String), arr.toString(), 'toPrimitive(' + debug(arr) + ') returns toString of the array');
+		t.ok(is(toPrimitive(arr, Number), arr.toString()), 'toPrimitive(' + debug(arr) + ') returns toString of the array');
 	});
 	t.end();
 });
@@ -30,9 +30,9 @@ test('Arrays', function (t) {
 test('Dates', function (t) {
 	var dates = [new Date(), new Date(0), new Date(NaN)];
 	forEach(dates, function (date) {
-		t.equal(toPrimitive(date), String(date), 'toPrimitive(' + debug(date) + ') returns the string version of the date');
-		t.equal(toPrimitive(date, String), String(date), 'toPrimitive(' + debug(date) + ') returns the string version of the date');
-		t.ok(is(toPrimitive(date, Number), Number(date)), 'toPrimitive(' + debug(date) + ') returns the number version of the date');
+		t.equal(toPrimitive(date), date.toString(), 'toPrimitive(' + debug(date) + ') returns toString of the date');
+		t.equal(toPrimitive(date, String), date.toString(), 'toPrimitive(' + debug(date) + ') returns toString of the date');
+		t.ok(is(toPrimitive(date, Number), date.valueOf()), 'toPrimitive(' + debug(date) + ') returns valueOf of the date');
 	});
 	t.end();
 });
@@ -46,23 +46,23 @@ var uncoercibleFnObject = { valueOf: function () { return function valueOfFn() {
 
 test('Objects', function (t) {
 	t.equal(toPrimitive(coercibleObject), coercibleObject.valueOf(), 'coercibleObject with no hint coerces to valueOf');
-	t.equal(toPrimitive(coercibleObject, String), String(coercibleObject.toString()), 'coercibleObject with hint String coerces to stringified toString');
+	t.equal(toPrimitive(coercibleObject, String), coercibleObject.toString(), 'coercibleObject with hint String coerces to toString');
 	t.equal(toPrimitive(coercibleObject, Number), coercibleObject.valueOf(), 'coercibleObject with hint Number coerces to valueOf');
 
-	t.equal(toPrimitive(coercibleFnObject), coercibleFnObject.toString(), 'coercibleFnObject coerces to non-stringified toString');
-	t.equal(toPrimitive(coercibleFnObject, String), String(coercibleFnObject.toString()), 'coercibleFnObject with hint String coerces to stringified toString');
-	t.equal(toPrimitive(coercibleFnObject, Number), coercibleFnObject.toString(), 'coercibleFnObject with hint Number coerces to non-stringified toString');
+	t.equal(toPrimitive(coercibleFnObject), coercibleFnObject.toString(), 'coercibleFnObject coerces to toString');
+	t.equal(toPrimitive(coercibleFnObject, String), coercibleFnObject.toString(), 'coercibleFnObject with hint String coerces to toString');
+	t.equal(toPrimitive(coercibleFnObject, Number), coercibleFnObject.toString(), 'coercibleFnObject with hint Number coerces to toString');
 
-	t.ok(is(toPrimitive({}), NaN), '{} with no hint coerces to NaN');
+	t.ok(is(toPrimitive({}), '[object Object]'), '{} with no hint coerces to Object#toString');
 	t.equal(toPrimitive({}, String), '[object Object]', '{} with hint String coerces to Object#toString');
-	t.ok(is(toPrimitive({}, Number), NaN), '{} with hint Number coerces to NaN');
+	t.ok(is(toPrimitive({}, Number), '[object Object]'), '{} with hint Number coerces to Object#toString');
 
-	t.equal(toPrimitive(toStringOnlyObject), toStringOnlyObject.toString(), 'toStringOnlyObject returns non-stringified toString');
-	t.equal(toPrimitive(toStringOnlyObject, String), String(toStringOnlyObject.toString()), 'toStringOnlyObject with hint String returns stringified toString');
-	t.equal(toPrimitive(toStringOnlyObject, Number), toStringOnlyObject.toString(), 'toStringOnlyObject with hint Number returns non-stringified toString');
+	t.equal(toPrimitive(toStringOnlyObject), toStringOnlyObject.toString(), 'toStringOnlyObject returns toString');
+	t.equal(toPrimitive(toStringOnlyObject, String), toStringOnlyObject.toString(), 'toStringOnlyObject with hint String returns toString');
+	t.equal(toPrimitive(toStringOnlyObject, Number), toStringOnlyObject.toString(), 'toStringOnlyObject with hint Number returns toString');
 
 	t.equal(toPrimitive(valueOfOnlyObject), valueOfOnlyObject.valueOf(), 'valueOfOnlyObject returns valueOf');
-	t.equal(toPrimitive(valueOfOnlyObject, String), String(valueOfOnlyObject.valueOf()), 'valueOfOnlyObject with hint String returns stringified valueOf');
+	t.equal(toPrimitive(valueOfOnlyObject, String), valueOfOnlyObject.valueOf(), 'valueOfOnlyObject with hint String returns valueOf');
 	t.equal(toPrimitive(valueOfOnlyObject, Number), valueOfOnlyObject.valueOf(), 'valueOfOnlyObject with hint Number returns valueOf');
 
 	t.test('exceptions', function (st) {
