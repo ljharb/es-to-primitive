@@ -36,6 +36,7 @@ var GetMethod = function GetMethod(O, P) {
 		}
 		return func;
 	}
+	return void 0;
 };
 
 // http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
