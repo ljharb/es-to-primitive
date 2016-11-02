@@ -21,7 +21,7 @@ test('primitives', function (t) {
 });
 
 test('Symbols', { skip: !hasSymbols }, function (t) {
-	var symbols = [Symbol(), Symbol.iterator, Symbol.for('foo')];
+	var symbols = [Symbol('foo'), Symbol.iterator, Symbol.for('foo')];
 	forEach(symbols, function (sym) {
 		t.equal(toPrimitive(sym), sym, 'toPrimitive(' + debug(sym) + ') returns the same value');
 		t.equal(toPrimitive(sym, String), sym, 'toPrimitive(' + debug(sym) + ', String) returns the same value');
