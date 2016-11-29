@@ -40,9 +40,15 @@ test('Dates', function (t) {
 var coercibleObject = { valueOf: function () { return 3; }, toString: function () { return 42; } };
 var valueOfOnlyObject = { valueOf: function () { return 4; }, toString: function () { return {}; } };
 var toStringOnlyObject = { valueOf: function () { return {}; }, toString: function () { return 7; } };
-var coercibleFnObject = { valueOf: function () { return function valueOfFn() {}; }, toString: function () { return 42; } };
+var coercibleFnObject = {
+	valueOf: function () { return function valueOfFn() {}; },
+	toString: function () { return 42; }
+};
 var uncoercibleObject = { valueOf: function () { return {}; }, toString: function () { return {}; } };
-var uncoercibleFnObject = { valueOf: function () { return function valueOfFn() {}; }, toString: function () { return function toStrFn() {}; } };
+var uncoercibleFnObject = {
+	valueOf: function () { return function valueOfFn() {}; },
+	toString: function () { return function toStrFn() {}; }
+};
 
 test('Objects', function (t) {
 	t.equal(toPrimitive(coercibleObject), coercibleObject.valueOf(), 'coercibleObject with no hint coerces to valueOf');

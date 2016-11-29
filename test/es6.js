@@ -21,7 +21,11 @@ test('primitives', function (t) {
 });
 
 test('Symbols', { skip: !hasSymbols }, function (t) {
-	var symbols = [Symbol('foo'), Symbol.iterator, Symbol.for('foo')];
+	var symbols = [
+		Symbol('foo'),
+		Symbol.iterator,
+		Symbol.for('foo') // eslint-disable-line no-restricted-properties
+	];
 	forEach(symbols, function (sym) {
 		t.equal(toPrimitive(sym), sym, 'toPrimitive(' + debug(sym) + ') returns the same value');
 		t.equal(toPrimitive(sym, String), sym, 'toPrimitive(' + debug(sym) + ', String) returns the same value');
@@ -59,9 +63,15 @@ test('Dates', function (t) {
 var coercibleObject = { valueOf: function () { return 3; }, toString: function () { return 42; } };
 var valueOfOnlyObject = { valueOf: function () { return 4; }, toString: function () { return {}; } };
 var toStringOnlyObject = { valueOf: function () { return {}; }, toString: function () { return 7; } };
-var coercibleFnObject = { valueOf: function () { return function valueOfFn() {}; }, toString: function () { return 42; } };
+var coercibleFnObject = {
+	valueOf: function () { return function valueOfFn() {}; },
+	toString: function () { return 42; }
+};
 var uncoercibleObject = { valueOf: function () { return {}; }, toString: function () { return {}; } };
-var uncoercibleFnObject = { valueOf: function () { return function valueOfFn() {}; }, toString: function () { return function toStrFn() {}; } };
+var uncoercibleFnObject = {
+	valueOf: function () { return function valueOfFn() {}; },
+	toString: function () { return function toStrFn() {}; }
+};
 
 test('Objects', function (t) {
 	t.equal(toPrimitive(coercibleObject), coercibleObject.valueOf(), 'coercibleObject with no hint coerces to valueOf');
@@ -104,7 +114,9 @@ test('Objects', function (t) {
 			sst['throws'](toPrimitive.bind(null, nonFunctionToPrimitive), TypeError, 'Symbol.toPrimitive returning a non-function throws');
 
 			var uncoercibleToPrimitive = { toString: sst.fail, valueOf: sst.fail };
-			uncoercibleToPrimitive[Symbol.toPrimitive] = function (hint) { return { toString: function () { return hint; } }; };
+			uncoercibleToPrimitive[Symbol.toPrimitive] = function (hint) {
+				return { toString: function () { return hint; } };
+			};
 			sst['throws'](toPrimitive.bind(null, uncoercibleToPrimitive), TypeError, 'Symbol.toPrimitive returning an object throws');
 
 			var throwingToPrimitive = { toString: sst.fail, valueOf: sst.fail };
