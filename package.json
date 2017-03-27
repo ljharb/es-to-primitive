@@ -43,9 +43,9 @@
 		"object-is": "^1.0.1",
 		"foreach": "^2.0.5",
 		"jscs": "^3.0.7",
-		"nsp": "^2.6.2",
-		"eslint": "^3.11.1",
-		"@ljharb/eslint-config": "^9.0.1",
+		"nsp": "^2.6.3",
+		"eslint": "^3.18.0",
+		"@ljharb/eslint-config": "^11.0.0",
 		"replace": "^0.3.0",
 		"semver": "^5.3.0"
 	},
