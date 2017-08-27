@@ -4,7 +4,7 @@ var test = require('tape');
 var toPrimitive = require('../es5');
 var is = require('object-is');
 var forEach = require('foreach');
-var debug = require('util').inspect;
+var debug = require('object-inspect');
 
 var primitives = [null, undefined, true, false, 0, -0, 42, NaN, Infinity, -Infinity, '', 'abc'];
 

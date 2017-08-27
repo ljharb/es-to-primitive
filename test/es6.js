@@ -4,7 +4,7 @@ var test = require('tape');
 var toPrimitive = require('../es6');
 var is = require('object-is');
 var forEach = require('foreach');
-var debug = require('util').inspect;
+var debug = require('object-inspect');
 
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
 var hasSymbolToPrimitive = hasSymbols && typeof Symbol.toPrimitive === 'symbol';
