@@ -38,16 +38,16 @@
 		"is-symbol": "^1.0.1"
 	},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^11.0.0",
+		"@ljharb/eslint-config": "^12.2.1",
 		"covert": "^1.1.0",
-		"eslint": "^3.19.0",
+		"eslint": "^4.5.0",
 		"foreach": "^2.0.5",
 		"jscs": "^3.0.7",
-		"nsp": "^2.6.3",
+		"nsp": "^2.7.0",
 		"object-is": "^1.0.1",
 		"replace": "^0.3.0",
-		"semver": "^5.3.0",
-		"tape": "^4.7.0"
+		"semver": "^5.4.1",
+		"tape": "^4.8.0"
 	},
 	"testling": {
 		"files": "test",

@@ -24,7 +24,7 @@ test('Symbols', { skip: !hasSymbols }, function (t) {
 	var symbols = [
 		Symbol('foo'),
 		Symbol.iterator,
-		Symbol.for('foo') // eslint-disable-line no-restricted-properties
+		Symbol['for']('foo') // eslint-disable-line no-restricted-properties
 	];
 	forEach(symbols, function (sym) {
 		t.equal(toPrimitive(sym), sym, 'toPrimitive(' + debug(sym) + ') returns the same value');
