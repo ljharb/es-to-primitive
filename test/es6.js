@@ -4,10 +4,18 @@ var test = require('tape');
 var toPrimitive = require('../es6');
 var is = require('object-is');
 var forEach = require('foreach');
+var functionName = require('function.prototype.name');
 var debug = require('object-inspect');
 
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
 var hasSymbolToPrimitive = hasSymbols && typeof Symbol.toPrimitive === 'symbol';
+
+test('function properties', function (t) {
+	t.equal(toPrimitive.length, 1, 'length is 1');
+	t.equal(functionName(toPrimitive), 'ToPrimitive', 'name is ToPrimitive');
+
+	t.end();
+});
 
 var primitives = [null, undefined, true, false, 0, -0, 42, NaN, Infinity, -Infinity, '', 'abc'];
 

@@ -40,15 +40,15 @@ var GetMethod = function GetMethod(O, P) {
 };
 
 // http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
-module.exports = function ToPrimitive(input, PreferredType) {
+module.exports = function ToPrimitive(input) {
 	if (isPrimitive(input)) {
 		return input;
 	}
 	var hint = 'default';
 	if (arguments.length > 1) {
-		if (PreferredType === String) {
+		if (arguments[1] === String) {
 			hint = 'string';
-		} else if (PreferredType === Number) {
+		} else if (arguments[1] === Number) {
 			hint = 'number';
 		}
 	}
