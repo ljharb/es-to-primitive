@@ -40,16 +40,16 @@
 	"devDependencies": {
 		"@ljharb/eslint-config": "^12.2.1",
 		"covert": "^1.1.0",
-		"eslint": "^4.14.0",
+		"eslint": "^4.19.1",
 		"foreach": "^2.0.5",
-		"function.prototype.name": "^1.0.3",
+		"function.prototype.name": "^1.1.0",
 		"jscs": "^3.0.7",
-		"nsp": "^3.1.0",
+		"nsp": "^3.2.1",
 		"object-inspect": "^1.5.0",
 		"object-is": "^1.0.1",
 		"replace": "^0.3.0",
-		"semver": "^5.4.1",
-		"tape": "^4.8.0"
+		"semver": "^5.5.0",
+		"tape": "^4.9.0"
 	},
 	"testling": {
 		"files": "test",
