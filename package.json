@@ -40,9 +40,9 @@
 		"undefined"
 	],
 	"dependencies": {
-		"is-callable": "^1.1.3",
+		"is-callable": "^1.1.4",
 		"is-date-object": "^1.0.1",
-		"is-symbol": "^1.0.1"
+		"is-symbol": "^1.0.2"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^12.2.1",
