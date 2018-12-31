@@ -12,9 +12,7 @@
 		"tests-only": "node --es-staging test",
 		"coverage": "covert test/*.js",
 		"coverage-quiet": "covert test/*.js --quiet",
-		"lint": "npm run --silent jscs && npm run --silent eslint",
-		"jscs": "jscs test/*.js *.js",
-		"eslint": "eslint test/*.js *.js",
+		"lint": "eslint .",
 		"security": "nsp check"
 	},
 	"repository": {
@@ -50,7 +48,6 @@
 		"eslint": "^5.6.0",
 		"foreach": "^2.0.5",
 		"function.prototype.name": "^1.1.0",
-		"jscs": "^3.0.7",
 		"nsp": "^3.2.1",
 		"object-inspect": "^1.6.0",
 		"object-is": "^1.0.1",
