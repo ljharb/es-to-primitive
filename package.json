@@ -1,7 +1,10 @@
 {
 	"name": "es-to-primitive",
 	"version": "1.2.0",
-	"author": "Jordan Harband",
+	"author": "Jordan Harband <ljharb@gmail.com>",
+	"funding": {
+		"url": "https://github.com/sponsors/ljharb"
+	},
 	"description": "ECMAScript “ToPrimitive” algorithm. Provides ES5 and ES2015 versions.",
 	"license": "MIT",
 	"main": "index.js",
