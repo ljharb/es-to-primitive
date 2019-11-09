@@ -45,9 +45,9 @@
 		"is-symbol": "^1.0.2"
 	},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^14.1.0",
+		"@ljharb/eslint-config": "^15.0.0",
 		"covert": "^1.1.1",
-		"eslint": "^6.4.0",
+		"eslint": "^6.6.0",
 		"foreach": "^2.0.5",
 		"function.prototype.name": "^1.1.1",
 		"has-symbols": "^1.0.0",
