@@ -42,7 +42,7 @@
 	"dependencies": {
 		"is-callable": "^1.1.4",
 		"is-date-object": "^1.0.1",
-		"is-symbol": "^1.0.2"
+		"is-symbol": "^1.0.3"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^15.0.2",
