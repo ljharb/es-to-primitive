@@ -40,8 +40,8 @@
 		"undefined"
 	],
 	"dependencies": {
-		"is-callable": "^1.1.4",
-		"is-date-object": "^1.0.1",
+		"is-callable": "^1.1.5",
+		"is-date-object": "^1.0.2",
 		"is-symbol": "^1.0.3"
 	},
 	"devDependencies": {
