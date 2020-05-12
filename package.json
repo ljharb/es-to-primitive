@@ -46,16 +46,17 @@
 		"is-symbol": "^1.0.3"
 	},
 	"devDependencies": {
-		"@ljharb/eslint-config": "^16.0.0",
+		"@ljharb/eslint-config": "^17.0.0",
+		"aud": "^1.1.1",
 		"covert": "^1.1.1",
-		"eslint": "^6.8.0",
+		"eslint": "^7.0.0",
 		"foreach": "^2.0.5",
 		"function.prototype.name": "^1.1.2",
 		"has-symbols": "^1.0.1",
 		"object-inspect": "^1.7.0",
-		"object-is": "^1.0.2",
+		"object-is": "^1.1.2",
 		"safe-publish-latest": "^1.1.4",
-		"tape": "^5.0.0-next.4"
+		"tape": "^5.0.0"
 	},
 	"testling": {
 		"files": "test",
