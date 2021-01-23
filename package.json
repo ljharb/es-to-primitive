@@ -39,7 +39,7 @@
 		"undefined"
 	],
 	"dependencies": {
-		"is-callable": "^1.1.5",
+		"is-callable": "^1.2.2",
 		"is-date-object": "^1.0.2",
 		"is-symbol": "^1.0.3"
 	},
