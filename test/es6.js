@@ -80,7 +80,7 @@ test('Objects', function (t) {
 	t.equal(toPrimitive(v.valueOfOnlyObject, Number), v.valueOfOnlyObject.valueOf(), 'valueOfOnlyObject with hint Number returns valueOf');
 	t.equal(toPrimitive(v.valueOfOnlyObject, String), v.valueOfOnlyObject.valueOf(), 'valueOfOnlyObject with hint String returns non-stringified valueOf');
 
-	t.test('Symbol.toPrimitive', { skip: !v.hasSymbolToPrimitive }, function (st) {
+	t.test('Symbol.toPrimitive', { skip: !v.hasSymbols || !Symbol.toPrimitive }, function (st) {
 		var overriddenObject = { toString: st.fail, valueOf: st.fail };
 		overriddenObject[Symbol.toPrimitive] = function (hint) { return String(hint); };
 
