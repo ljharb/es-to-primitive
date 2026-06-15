@@ -5,6 +5,7 @@ var toStr = Object.prototype.toString;
 var isPrimitive = require('./helpers/isPrimitive');
 
 var isCallable = require('is-callable');
+var $TypeError = require('es-errors/type');
 
 /** @type {{ [k in `[[${string}]]`]: (O: { toString?: unknown, valueOf?: unknown }, actualHint?: StringConstructor | NumberConstructor) => null | undefined | string | symbol | number | boolean | bigint; }} */
 // http://ecma-international.org/ecma-262/5.1/#sec-8.12.8
@@ -31,9 +32,9 @@ var ES5internalSlots = {
 					}
 				}
 			}
-			throw new TypeError('No default value');
+			throw new $TypeError('No default value');
 		}
-		throw new TypeError('invalid [[DefaultValue]] hint supplied');
+		throw new $TypeError('invalid [[DefaultValue]] hint supplied');
 	}
 };
 
