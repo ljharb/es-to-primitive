@@ -2,13 +2,16 @@
 
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
 
-var isPrimitive = require('./helpers/isPrimitive');
 var isCallable = require('is-callable');
 var isDate = require('is-date-object');
 var isSymbol = require('is-symbol');
 var $TypeError = require('es-errors/type');
 
-/** @type {(O: { valueOf?: () => unknown, toString?: () => unknown }, hint: 'number' | 'string' | 'default') => null | undefined | string | symbol | number | boolean | bigint} */
+var isPrimitive = require('./helpers/isPrimitive');
+
+/** @import { primitive } from './' */
+
+/** @type {(O: { valueOf?: () => unknown, toString?: () => unknown }, hint: 'number' | 'string') => primitive} */
 function OrdinaryToPrimitive(O, hint) {
 	if (typeof O === 'undefined' || O === null) {
 		throw new $TypeError('Cannot call method on ' + O);
@@ -40,7 +43,7 @@ function GetMethod(O, P) {
 		}
 		return func;
 	}
-	return void 0;
+	return void undefined;
 }
 
 /** @type {import('./es2015')} */
@@ -62,7 +65,7 @@ module.exports = function ToPrimitive(input) {
 	var exoticToPrim;
 	if (hasSymbols) {
 		if (Symbol.toPrimitive) {
-			// eslint-disable-next-line no-extra-parens
+
 			exoticToPrim = GetMethod(/** @type {Record<PropertyKey, unknown>} */ (input), Symbol.toPrimitive);
 		} else if (isSymbol(input)) {
 			exoticToPrim = Symbol.prototype.valueOf;
@@ -76,7 +79,7 @@ module.exports = function ToPrimitive(input) {
 		throw new $TypeError('unable to convert exotic object to primitive');
 	}
 	if (hint === 'default' && (isDate(input) || isSymbol(input))) {
-		hint = 'string';
+		hint = /** @type {const} */ ('string');
 	}
 
 	return OrdinaryToPrimitive(input, hint === 'default' ? 'number' : hint);

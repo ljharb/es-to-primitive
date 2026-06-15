@@ -12,7 +12,8 @@
 				"GetMethod",
 				"OrdinaryToPrimitive",
 			],
-		}]
+		}],
+		"no-extra-parens": 0,
 	},
 
 	"overrides": [
