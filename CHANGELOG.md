@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.1](https://github.com/ljharb/es-to-primitive/compare/v1.3.0...v1.3.1) - 2026-06-15
+
+### Commits
+
+- [types] improve types [`b3857bd`](https://github.com/ljharb/es-to-primitive/commit/b3857bd9480c9372a191ee8a998fb78d522ff908)
+- [Dev Deps] update `eslint` [`85aa673`](https://github.com/ljharb/es-to-primitive/commit/85aa673c0916ab498a2c57805267879cf9cd0495)
+- [Robustness] use `es-errors` [`f91017d`](https://github.com/ljharb/es-to-primitive/commit/f91017d4812099dab3a8709360717fc4f0dbb36e)
+- [Dev Deps] update `@arethetypeswrong/cli`, `@ljharb/eslint-config`, `@ljharb/tsconfig`, `@types/function.prototype.name`, `@types/is-date-object`, `@types/is-symbol`, `auto-changelog`, `es-value-fixtures`, `eslint`, `for-each`, `function.prototype.name`, `npmignore`, `object-inspect`, `tape` [`db8d4d8`](https://github.com/ljharb/es-to-primitive/commit/db8d4d8ca4d69facc6f3711cca121be79363050c)
+- [Refactor] use `es-abstract-get`’s GetMethod implementation [`ee426a3`](https://github.com/ljharb/es-to-primitive/commit/ee426a393f02f633b3d3ea3589bb2b5061b00311)
+- [eslint] simplify config [`81c38c3`](https://github.com/ljharb/es-to-primitive/commit/81c38c3a7845a3ce65e62e46fd3e47315f3273fe)
+- [Dev Deps] remove no-longer-needed DT packages [`fa1348c`](https://github.com/ljharb/es-to-primitive/commit/fa1348c87e011096ce99ff8616372d09f621e429)
+- [Deps] update `is-date-object`, `is-symbol` [`4f07bad`](https://github.com/ljharb/es-to-primitive/commit/4f07bad5c7bf6e42cdbf5adee8578d24c51d2037)
+- [readme] replace runkit CI badge with shields.io check-runs badge [`f5b8ae6`](https://github.com/ljharb/es-to-primitive/commit/f5b8ae69e2c0ca688f91e04517905a29941e2357)
+
 ## [v1.3.0](https://github.com/ljharb/es-to-primitive/compare/v1.2.1...v1.3.0) - 2024-11-26
 
 ### Commits
