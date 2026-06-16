@@ -34,17 +34,7 @@ function OrdinaryToPrimitive(O, hint) {
 	throw new $TypeError('No default value');
 }
 
-/** @type {<K extends PropertyKey>(O: Record<K, unknown>, P: K) => Function | undefined} */
-function GetMethod(O, P) {
-	var func = O[P];
-	if (func !== null && typeof func !== 'undefined') {
-		if (!isCallable(func)) {
-			throw new $TypeError(func + ' returned for property ' + String(P) + ' of object ' + O + ' is not a function');
-		}
-		return func;
-	}
-	return void undefined;
-}
+var GetMethod = require('es-abstract-get/GetMethod');
 
 /** @type {import('./es2015')} */
 // http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
@@ -66,7 +56,11 @@ module.exports = function ToPrimitive(input) {
 	if (hasSymbols) {
 		if (Symbol.toPrimitive) {
 
-			exoticToPrim = GetMethod(/** @type {Record<PropertyKey, unknown>} */ (input), Symbol.toPrimitive);
+			exoticToPrim = GetMethod(
+				/** @type {{ [k in SymbolConstructor['toPrimitive']]?: Function }} */
+				(input),
+				Symbol.toPrimitive
+			);
 		} else if (isSymbol(input)) {
 			exoticToPrim = Symbol.prototype.valueOf;
 		}

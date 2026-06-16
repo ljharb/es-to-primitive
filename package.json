@@ -44,6 +44,7 @@
 		"undefined"
 	],
 	"dependencies": {
+		"es-abstract-get": "^1.0.0",
 		"es-errors": "^1.3.0",
 		"is-callable": "^1.2.7",
 		"is-date-object": "^1.1.0",
