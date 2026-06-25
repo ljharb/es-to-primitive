@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.3](https://github.com/ljharb/es-to-primitive/compare/v1.3.2...v1.3.3) - 2026-06-25
+
+### Commits
+
+- [types] further improve types [`f92b77a`](https://github.com/ljharb/es-to-primitive/commit/f92b77a6a54594b39e2520a14836088072ba4bce)
+
 ## [v1.3.2](https://github.com/ljharb/es-to-primitive/compare/v1.3.1...v1.3.2) - 2026-06-25
 
 ### Commits
