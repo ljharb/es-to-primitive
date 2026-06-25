@@ -3,7 +3,7 @@ import type { primitive } from './';
 declare function ToPrimitive(
     input: unknown,
     hint?: StringConstructor | NumberConstructor,
-): primitive | ToPrimitive.primitiveES6;
+): ToPrimitive.primitiveES6;
 
 
 declare namespace ToPrimitive {
