@@ -1,6 +1,6 @@
 {
 	"name": "es-to-primitive",
-	"version": "1.3.3",
+	"version": "1.3.4",
 	"author": "Jordan Harband <ljharb@gmail.com>",
 	"funding": {
 		"url": "https://github.com/sponsors/ljharb"

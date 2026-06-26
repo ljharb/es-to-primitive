@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.4](https://github.com/ljharb/es-to-primitive/compare/v1.3.3...v1.3.4) - 2026-06-25
+
+### Commits
+
+- [types] expose `ES5`/`ES6`/`ES2015` as statically-detectable named exports, to fix `attw` [`477f235`](https://github.com/ljharb/es-to-primitive/commit/477f235b81269b6195ff849ee33efe6eed1f7fd9)
+- [Robustness] use `es-define-property` [`73d7fa3`](https://github.com/ljharb/es-to-primitive/commit/73d7fa3a67241152b5602f45e5f14fc5c3d72fdf)
+
 ## [v1.3.3](https://github.com/ljharb/es-to-primitive/compare/v1.3.2...v1.3.3) - 2026-06-25
 
 ### Commits
