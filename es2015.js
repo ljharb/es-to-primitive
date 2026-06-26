@@ -9,9 +9,9 @@ var $TypeError = require('es-errors/type');
 
 var isPrimitive = require('./helpers/isPrimitive');
 
-/** @import { primitive } from './' */
+/** @import { primitiveES6 } from './es2015' */
 
-/** @type {(O: { valueOf?: () => unknown, toString?: () => unknown }, hint: 'number' | 'string') => primitive} */
+/** @type {(O: { valueOf?: () => unknown, toString?: () => unknown }, hint: 'number' | 'string') => primitiveES6} */
 function OrdinaryToPrimitive(O, hint) {
 	if (typeof O === 'undefined' || O === null) {
 		throw new $TypeError('Cannot call method on ' + O);
@@ -27,7 +27,7 @@ function OrdinaryToPrimitive(O, hint) {
 		if (isCallable(method)) {
 			result = method.call(O);
 			if (isPrimitive(result)) {
-				return result;
+				return /** @type {primitiveES6} */ (result);
 			}
 		}
 	}
@@ -40,7 +40,7 @@ var GetMethod = require('es-abstract-get/GetMethod');
 // http://www.ecma-international.org/ecma-262/6.0/#sec-toprimitive
 module.exports = function ToPrimitive(input) {
 	if (isPrimitive(input)) {
-		return input;
+		return /** @type {primitiveES6} */ (input);
 	}
 	/** @type {'default' | 'string' | 'number'} */
 	var hint = 'default';
@@ -68,7 +68,7 @@ module.exports = function ToPrimitive(input) {
 	if (typeof exoticToPrim !== 'undefined') {
 		var result = exoticToPrim.call(input, hint);
 		if (isPrimitive(result)) {
-			return result;
+			return /** @type {primitiveES6} */ (result);
 		}
 		throw new $TypeError('unable to convert exotic object to primitive');
 	}

@@ -1,4 +1,4 @@
-import type { primitive } from './';
+import type { primitiveES5 } from './es5';
 
 declare function ToPrimitive(
     input: unknown,
@@ -7,7 +7,7 @@ declare function ToPrimitive(
 
 
 declare namespace ToPrimitive {
-    export type primitiveES6 = Exclude<primitive, bigint>;
+    export type primitiveES6 = primitiveES5 | symbol;
     export type unknownES6 = primitiveES6 | object;
 }
 
